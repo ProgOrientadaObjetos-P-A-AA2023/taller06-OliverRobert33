@@ -8,7 +8,7 @@ public class EntidadHospitalaria {
     private String nombreHospital, direccionHospital;
     private double totalSueldos;
     private int nmroEspecialidades;
-    
+
     private Hospital hospital;
     private Medico medico;
     private Enfermero enfermero;
@@ -79,10 +79,17 @@ public class EntidadHospitalaria {
     @Override
     public String toString() {
         String mensaje = String.format(""
-                + "HOSPITAL %s\nDirección: %s\nCiudad: %s\nProvincia: %s\nNúmero de especialidades: %d\nListado Medicos:\n",
+                + "HOSPITAL %s\n"
+                + "Dirección: %s\n"
+                + "Ciudad: %s\n"
+                + "Provincia: %s\n"
+                + "Número de especialidades: %d\n"
+                + "Listado de médicos\n",
                 obtenerNombreHospital(),
-                obtenerDireccionHospital(), hospital.obtenerNombreCiudad(),
-                hospital.obtenerProvinciCiudad(), medico.obtenerEspecialidad().length);
+                obtenerDireccionHospital(),
+                hospital.obtenerNombreCiudad(),
+                hospital.obtenerProvinciCiudad(),
+                medico.obtenerEspecialidad().length);
 
         for (int i = 0; i < medico.obtenerNombreDoctor().length; i++) {
             mensaje = String.format(""
@@ -94,7 +101,11 @@ public class EntidadHospitalaria {
                     medico.obtenerEspecialidad()[i]);
         }
 
-        mensaje = String.format("%s\nListado de enfermeros(as)\n", mensaje);
+        mensaje = String.format(""
+                + "%s\n"
+                + "Listado de enfermeros(as)\n",
+                mensaje);
+
         for (int i = 0; i < enfermero.obtenerNombreEnfermero().length; i++) {
             mensaje = String.format(""
                     + "%s "
@@ -104,9 +115,12 @@ public class EntidadHospitalaria {
                     enfermero.obtenerSueldoMensual()[i],
                     enfermero.obtenerTipo()[i]);
         }
-        
-        mensaje = String.format("%s\nTotal sueldos a pagar por mes: %.0f", mensaje, obtenerTotalSueldos());
 
+        mensaje = String.format(""
+                + "%s\n"
+                + "Total sueldos a pagar por mes: %.0f",
+                mensaje,
+                obtenerTotalSueldos());
 
         return mensaje;
     }

@@ -21,7 +21,7 @@ public class Principal {
 
         String[] nombreDoctor, especialidadDoctor, nombreEnfermero, tipoEnfermero;
         double[] sueldoDoctor, sueldoeEnfermero;
-        int nmroEspecialidades, numero;
+        int numero;
 
         // Ingresen por teclado
         System.out.println("Ingrese el Nombre del hospital:");
@@ -37,12 +37,16 @@ public class Principal {
         provinciaCiudad = entrada.nextLine();
         Hospital hospital = new Hospital(nombreCiudad, provinciaCiudad);
 
+        // Lo declaro al objeto primero.
         Medico medico = null;
         System.out.println("Ingrese el número de Doctores a ingresar:");
         numero = entrada.nextInt();
+        
+        // Asigno el tamaño a los arreglo
         nombreDoctor = new String[numero];
         especialidadDoctor = new String[numero];
         sueldoDoctor = new double[numero];
+        
         for (int i = 0; i < numero; i++) {
             entrada.nextLine();
 
@@ -54,21 +58,24 @@ public class Principal {
 
             System.out.println("Ingrese el sueldo mensual del Doctor:");
             sueldoDoctor[i] = entrada.nextDouble();
-//            entrada.nextLine();
+            
             medico = new Medico(nombreDoctor, especialidadDoctor,
                     sueldoDoctor);
         }
-
-        String cadena;
+        
+        // Lo declaro al objeto primero.
         Enfermero enfermero = null;
         System.out.println("Ingrese el número de Enfermeros a ingresar:");
         numero = entrada.nextInt();
+        
+        // Asigno el tamaño a los arreglo
         nombreEnfermero = new String[numero];
         tipoEnfermero = new String[numero];
         sueldoeEnfermero = new double[numero];
 
-        entrada.nextLine();
         for (int i = 0; i < numero; i++) {
+            entrada.nextLine();
+
             System.out.println("Ingrese el nombre del Enfermero " + (i + 1) + ":");
             nombreEnfermero[i] = entrada.nextLine();
 
@@ -77,13 +84,10 @@ public class Principal {
 
             System.out.println("Ingrese el sueldo mensual del Enfermero:");
             sueldoeEnfermero[i] = entrada.nextDouble();
-            entrada.nextLine();
-            cadena = String.format("- ");
+            
             enfermero = new Enfermero(nombreEnfermero,
                     tipoEnfermero, sueldoeEnfermero);
         }
-        
-
 
         EntidadHospitalaria entidadHospitalaria = new EntidadHospitalaria
         (nombreHospital, direccionHospital, hospital, medico, enfermero);
